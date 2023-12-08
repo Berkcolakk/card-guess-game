@@ -1,0 +1,20 @@
+{
+  "easy": [
+    {
+      "chapterId": 1,
+      "cardsCount": 2
+    }
+  ],
+  "normal": [
+    {
+      "chapterId": 1,
+      "cardsCount": 3
+    }
+  ],
+  "hard": [
+    {
+      "chapterId": 1,
+      "cardsCount": 4
+    }
+  ]
+}
