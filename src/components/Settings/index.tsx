@@ -15,10 +15,12 @@ interface IProps {
 const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
     const successMsg = () => message.success("Ayarlarınız başarıyla güncellenmiştir.")
     const SettingLine = ({ titleName, children }: { titleName: string; children: ReactNode }) => {
-        return (<Space className="grid grid-cols-3 m-1">
-            <Title level={5} className="!mb-0">{titleName}: </Title>
-            {children}
-        </Space>)
+        return (
+            <Space className="grid grid-cols-3 m-1">
+                <Title level={5} className="!mb-0">{titleName}: </Title>
+                {children}
+            </Space>
+        )
     }
     return (
         <CustomModal
