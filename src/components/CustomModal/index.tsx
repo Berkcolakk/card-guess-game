@@ -10,16 +10,12 @@ interface IProps {
 
 }
 const CustomModal: React.FC<IProps> = ({ open, setOpen, title, children, footer }) => {
-    const modalStyles = {
-        mask: {
-            backdropFilter: 'blur(10px)',
-        },
-    };
-
     return (
         <ConfigProvider
             modal={{
-                styles: modalStyles,
+                styles: {
+                    mask: { backdropFilter: 'blur(10px)', },
+                },
             }}
         >
             <Modal
@@ -29,6 +25,7 @@ const CustomModal: React.FC<IProps> = ({ open, setOpen, title, children, footer 
                 onCancel={() => setOpen(false)}
                 okButtonProps={{ style: { display: "none" } }}
                 cancelButtonProps={{ style: { display: "none" } }}
+                style={{ backgroundColor: "transparent" }}
             >
                 {children}
             </Modal>

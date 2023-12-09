@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import CustomModal from "../CustomModal"
-import { Segmented, Select, Space, message } from "antd";
+import { Segmented, Select, Space, Switch, message } from "antd";
 import Title from "antd/es/typography/Title";
 import { BugOutlined, RobotOutlined, SmileOutlined } from "@ant-design/icons";
 import { SegmentedValue } from "antd/es/segmented";
 import { gameOptionModule, TModeTypes } from "@/store/GameOptionStore";
 import { observer } from "mobx-react-lite";
+import { toggleFullScreen } from "@/utils/utils";
 
 interface IProps {
     open: boolean;
@@ -13,15 +14,20 @@ interface IProps {
 }
 const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
     const successMsg = () => message.success("Ayarlarınız başarıyla güncellenmiştir.")
+    const SettingLine = ({ titleName, children }: { titleName: string; children: ReactNode }) => {
+        return (<Space className="grid grid-cols-3 m-1">
+            <Title level={5} className="!mb-0">{titleName}: </Title>
+            {children}
+        </Space>)
+    }
     return (
         <CustomModal
             title={<Title level={3} className="!mb-0">Ayarlar</Title>}
             open={open}
             setOpen={setOpen}>
             <>
-                <Space className="grid grid-cols-3">
-                    <Title level={5} className="!mb-0">Oyun modu: </Title>
-                    <Segmented value={gameOptionModule.mode} options={[
+                <SettingLine titleName="Oyun modu" >
+                    <Segmented value={gameOptionModule.mode} className="bg-primary" options={[
                         { label: "Kolay", value: "easy", icon: <SmileOutlined /> },
                         { label: "Normal", value: "normal", icon: <RobotOutlined /> },
                         { label: "Zor", value: "hard", icon: <BugOutlined /> },
@@ -31,9 +37,8 @@ const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
                             localStorage.setItem("mode", value as TModeTypes)
                             successMsg();
                         }} />
-                </Space>
-                <Space className="grid grid-cols-3">
-                    <Title level={5} className="!mb-0">Dil: </Title>
+                </SettingLine>
+                <SettingLine titleName="Dil" >
                     <Select
                         defaultValue={gameOptionModule.language}
                         onChange={(value: string) => {
@@ -48,7 +53,12 @@ const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
                             { value: 'en', label: 'İngilizce' },
                         ]}
                     />
-                </Space>
+                </SettingLine>
+                <SettingLine titleName="Tam Ekran" >
+                    <Switch className="bg-primary" onChange={(value: boolean) => {
+                        toggleFullScreen()
+                    }} />
+                </SettingLine>
             </>
         </CustomModal>
     )
