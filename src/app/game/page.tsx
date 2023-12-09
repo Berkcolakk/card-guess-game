@@ -1,12 +1,8 @@
-import CardList from "@/components/CardList";
-import Countdown from "@/components/Countdown";
+import GameContainer from "@/containers/GameContainer";
 
 export default function Game() {
 
   return (
-    <>
-      <CardList />
-      <Countdown />
-    </>
+    <GameContainer />
   )
 }
