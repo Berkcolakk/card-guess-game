@@ -1,15 +1,15 @@
 import { makeAutoObservable } from 'mobx';
 
-type TModeTypes = "easy" | "normal" | "hard";
-class GameOptionStore {
-  mode: TModeTypes = "easy"
-  constructor() {
-    makeAutoObservable(this);
-  }
+export type TModeTypes = "easy" | "normal" | "hard";
+
+const gameOptionModule = {
+  mode: localStorage?.mode,
 
   setMode(payload: TModeTypes) {
     this.mode = payload;
   }
-}
+};
 
-export const gameOptionStore = new GameOptionStore();
+makeAutoObservable(gameOptionModule);
+
+export { gameOptionModule };
