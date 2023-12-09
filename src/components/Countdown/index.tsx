@@ -7,7 +7,7 @@ import { useWillChange } from "framer-motion";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 interface IProps {
-    defaultTimer?: number;
+    defaultTimer?: number; 
 }
 const Countdown = ({ defaultTimer = 3 }: IProps) => {
     const willChange = useWillChange()
