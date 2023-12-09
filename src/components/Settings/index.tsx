@@ -6,7 +6,7 @@ import { BugOutlined, RobotOutlined, SmileOutlined } from "@ant-design/icons";
 import { SegmentedValue } from "antd/es/segmented";
 import { gameOptionModule, TModeTypes } from "@/store/GameOptionStore";
 import { observer } from "mobx-react-lite";
-import { toggleFullScreen } from "@/utils/utils";
+import { toggleFullScreen } from "@/utils/common.utils";
 
 interface IProps {
     open: boolean;

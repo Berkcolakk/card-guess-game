@@ -1,6 +1,7 @@
 "use client"
 import Card from "@/components/Card";
 import CardList from "@/components/CardList";
+import { useCountdown } from "@/hooks/useCoundown";
 import Title from "antd/es/typography/Title";
 import { useWillChange } from "framer-motion";
 import { motion } from "framer-motion";
@@ -10,20 +11,8 @@ interface IProps {
 }
 const Countdown = ({ defaultTimer = 3 }: IProps) => {
     const willChange = useWillChange()
-    const [timer, setTimer] = useState(defaultTimer);
+    const [countdown] = useCountdown({ countStart: defaultTimer, countStop: 0, intervalMs: 1000, isIncrement: false })
 
-    useEffect(() => {
-        const interval = setTimeout(() => {
-            setTimer(timer - 1)
-        }, 1000)
-
-        if (timer <= 0) {
-            clearTimeout(interval);
-        }
-        return () => {
-            clearTimeout(interval);
-        }
-    }, [timer])
     const cursorVariants = {
         blinking: {
             opacity: [0, 0, 1, 1],
@@ -36,7 +25,7 @@ const Countdown = ({ defaultTimer = 3 }: IProps) => {
             }
         }
     };
-    if (timer <= 0) {
+    if (countdown <= 0) {
         return (
             <></>
         )
@@ -51,7 +40,7 @@ const Countdown = ({ defaultTimer = 3 }: IProps) => {
                     className="rounded-full bg-primary mx-auto h-40 w-40 text-center flex justify-center items-center"
                     transition={{ delay: 1 }}
                     style={{ willChange }}>
-                    <Title className="!mb-0" level={1}>{timer}</Title>
+                    <Title className="!mb-0" level={1}>{countdown}</Title>
                 </motion.div>
             </motion.div>
         </>
