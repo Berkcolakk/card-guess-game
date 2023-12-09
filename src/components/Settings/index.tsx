@@ -10,7 +10,7 @@ import { toggleFullScreen } from "@/utils/common.utils";
 
 interface IProps {
     open: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+    setOpen:() => void
 }
 const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
     const successMsg = () => message.success("Ayarlarınız başarıyla güncellenmiştir.")
@@ -26,7 +26,7 @@ const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
         <CustomModal
             title={<Title level={3} className="!mb-0">Ayarlar</Title>}
             open={open}
-            setOpen={setOpen}>
+            setOpen={() => setOpen()}>
             <>
                 <SettingLine titleName="Oyun modu" >
                     <Segmented value={gameOptionModule.mode} className="bg-primary" options={[
