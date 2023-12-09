@@ -1,17 +1,15 @@
 import { makeAutoObservable } from 'mobx';
 
-class CardStore {
-  selectedId = 0
+interface ICardStore {
+  selectedId: number;
+  setSelectedId(payload: number): void;
 
-  constructor() {
-    makeAutoObservable(this);
-  }
-
+}
+const CardStore: ICardStore = {
+  selectedId: 0,
   setSelectedId(payload: number) {
     this.selectedId = payload;
   }
-
-
 }
 
-export const counterStore = new CardStore();
+export { CardStore };

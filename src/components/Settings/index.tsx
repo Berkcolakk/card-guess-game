@@ -4,13 +4,14 @@ import { Segmented, Select, Space, Switch, message } from "antd";
 import Title from "antd/es/typography/Title";
 import { BugOutlined, RobotOutlined, SmileOutlined } from "@ant-design/icons";
 import { SegmentedValue } from "antd/es/segmented";
-import { gameOptionModule, TModeTypes } from "@/store/GameOptionStore";
+import { gameOption } from "@/store/GameOptionStore";
 import { observer } from "mobx-react-lite";
 import { toggleFullScreen } from "@/utils/common.utils";
+import { TModeTypes } from "@/models/types/GameOption";
 
 interface IProps {
     open: boolean;
-    setOpen:() => void
+    setOpen: () => void
 }
 const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
     const successMsg = () => message.success("Ayarlarınız başarıyla güncellenmiştir.")
@@ -22,6 +23,19 @@ const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
             </Space>
         )
     }
+    const handleGameMode = (value: SegmentedValue) => {
+        gameOption.setMode(value as TModeTypes)
+        localStorage.setItem("mode", value as TModeTypes)
+        successMsg();
+    }
+    const handleLangChange = (value: string) => {
+        gameOption.setLanguage(value)
+        localStorage.setItem("language", value)
+        successMsg();
+    }
+    const handleFullScreen = (value: boolean) => {
+        toggleFullScreen();
+    }
     return (
         <CustomModal
             title={<Title level={3} className="!mb-0">Ayarlar</Title>}
@@ -29,25 +43,17 @@ const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
             setOpen={() => setOpen()}>
             <>
                 <SettingLine titleName="Oyun modu" >
-                    <Segmented value={gameOptionModule.mode} className="bg-primary" options={[
+                    <Segmented value={gameOption.mode} className="bg-primary" options={[
                         { label: "Kolay", value: "easy", icon: <SmileOutlined /> },
                         { label: "Normal", value: "normal", icon: <RobotOutlined /> },
                         { label: "Zor", value: "hard", icon: <BugOutlined /> },
                     ]}
-                        onChange={(value: SegmentedValue) => {
-                            gameOptionModule.setMode(value as TModeTypes)
-                            localStorage.setItem("mode", value as TModeTypes)
-                            successMsg();
-                        }} />
+                        onChange={handleGameMode} />
                 </SettingLine>
                 <SettingLine titleName="Dil" >
                     <Select
-                        defaultValue={gameOptionModule.language}
-                        onChange={(value: string) => {
-                            gameOptionModule.setLanguage(value)
-                            localStorage.setItem("language", value)
-                            successMsg();
-                        }}
+                        defaultValue={gameOption.language}
+                        onChange={handleLangChange}
                         size="middle"
                         style={{ width: '100%' }}
                         options={[
@@ -57,9 +63,7 @@ const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
                     />
                 </SettingLine>
                 <SettingLine titleName="Tam Ekran" >
-                    <Switch className="bg-primary" onChange={(value: boolean) => {
-                        toggleFullScreen()
-                    }} />
+                    <Switch className="bg-primary" onChange={handleFullScreen} />
                 </SettingLine>
             </>
         </CustomModal>
