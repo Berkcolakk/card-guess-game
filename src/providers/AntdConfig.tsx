@@ -9,11 +9,16 @@ const AntdConfig = ({ children }: { children: ReactNode }) => {
             theme={{
                 algorithm: theme.darkAlgorithm,
             }}
+            modal={{
+                styles: {
+                    mask: { backdropFilter: 'blur(10px)', },
+                },
+            }}
         >
             <StyledComponentsRegistry>
                 {children}
             </StyledComponentsRegistry>
-        </ConfigProvider>
+        </ConfigProvider >
     )
 }
 export default AntdConfig;
