@@ -1,13 +1,16 @@
+"use client"
 import Card from "@/components/Card";
 import Cards from "@/data/yugiohCards.json";
 import Chapter from "@/data/chapter.json";
+import { observer } from "mobx-react-lite";
+import { gameOptionModule } from "@/store/GameOptionStore";
 
-const CardList = () => {
+const CardList = observer(() => {
     return (
-        <div className="grid grid-cols-7 h-[100dvh]">
+        <div className="flex h-[100dvh]">
             {Cards.map((item, index) => {
-                const getChapter = Chapter["easy"].filter((item) => item.chapterId === 1)[0]
-                if (index + 1 > getChapter.chapterId) {
+                const getChapter = Chapter[gameOptionModule.mode].filter((item: any) => item.chapterId === 1)[0]
+                if (index + 1 > getChapter.cardsCount) {
                     return true;
                 }
                 return (
@@ -16,5 +19,5 @@ const CardList = () => {
             })}
         </div>
     )
-}
+})
 export default CardList

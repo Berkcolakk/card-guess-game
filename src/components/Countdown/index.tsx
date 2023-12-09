@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 interface IProps {
     defaultTimer?: number;
 }
-const Countdown = ({ defaultTimer = 5 }: IProps) => {
+const Countdown = ({ defaultTimer = 3 }: IProps) => {
     const willChange = useWillChange()
     const [timer, setTimer] = useState(defaultTimer);
 
@@ -36,6 +36,11 @@ const Countdown = ({ defaultTimer = 5 }: IProps) => {
             }
         }
     };
+    if (timer <= 0) {
+        return (
+            <></>
+        )
+    }
 
     return (
         <>
@@ -46,7 +51,7 @@ const Countdown = ({ defaultTimer = 5 }: IProps) => {
                     className="rounded-full bg-primary mx-auto h-40 w-40 text-center flex justify-center items-center"
                     transition={{ delay: 1 }}
                     style={{ willChange }}>
-                    <Title level={2}>{timer}</Title>
+                    <Title className="!mb-0" level={1}>{timer}</Title>
                 </motion.div>
             </motion.div>
         </>
