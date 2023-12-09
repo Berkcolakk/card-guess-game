@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} m-0 h-[100dvh] bg-main text-white`}>
         <AntdConfig>
           {children}
         </AntdConfig>

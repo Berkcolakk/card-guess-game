@@ -1,14 +1,18 @@
 "use client"
-import { Button, Input, Space } from "antd"
+import { counterStore } from "@/store/CardStore";
 import { motion } from "framer-motion"
+import { observer } from "mobx-react-lite";
+
 interface IProps {
     imageURL: string;
+    id: number;
 }
-const Card = ({ imageURL }: IProps) => {
+const Card = observer(({ imageURL, id }: IProps) => {
     return (
         <>
             <motion.img
                 src={imageURL}
+                onClick={() => counterStore.setSelectedId(id)}
                 className="w-32 h-32 bg-black cursor-pointer rounded-md mx-auto my-10"
                 whileInView={{ scale: 1.1 }}
                 whileHover={{ scale: 1.4 }}
@@ -16,5 +20,5 @@ const Card = ({ imageURL }: IProps) => {
             />
         </>
     )
-}
+})
 export default Card

@@ -1,4 +1,3 @@
-"use client"
 import Card from "@/components/Card";
 import Cards from "@/data/yugiohCards.json";
 import Chapter from "@/data/chapter.json";
@@ -12,7 +11,7 @@ const CardList = () => {
                     return true;
                 }
                 return (
-                    <Card key={index} imageURL={item.imagePath} />
+                    <Card key={index} imageURL={item.imagePath} id={item.id} />
                 )
             })}
         </div>
