@@ -11,5 +11,6 @@ const CardStore: ICardStore = {
     this.selectedId = payload;
   }
 }
+makeAutoObservable(CardStore);
 
 export { CardStore };
