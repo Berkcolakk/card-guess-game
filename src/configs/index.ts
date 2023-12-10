@@ -1,1 +1,1 @@
-export const HOST = "";
+export const GAME_LOADING_SCREEN_SECOND = 3;

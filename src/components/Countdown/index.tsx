@@ -1,7 +1,7 @@
 "use client"
 import Card from "@/components/Card";
 import CardList from "@/components/CardList";
-import { useCountdown } from "@/hooks/useCoundown";
+import { useCountdown } from "@/hooks/useCountdown";
 import Title from "antd/es/typography/Title";
 import { useWillChange } from "framer-motion";
 import { motion } from "framer-motion";
