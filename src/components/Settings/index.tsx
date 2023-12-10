@@ -34,6 +34,7 @@ const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
         successMsg();
     }
     const handleFullScreen = (value: boolean) => {
+        gameOption.setFullScreen(value);
         toggleFullScreen();
     }
     return (
@@ -63,7 +64,7 @@ const Settings: React.FC<IProps> = observer(({ open, setOpen }) => {
                     />
                 </SettingLine>
                 <SettingLine titleName="Tam Ekran" >
-                    <Switch className="bg-primary" onChange={handleFullScreen} />
+                    <Switch className="bg-primary" value={gameOption.fullScreen} onChange={handleFullScreen} />
                 </SettingLine>
             </>
         </CustomModal>
