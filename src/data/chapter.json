@@ -1,20 +1,29 @@
 {
-  "easy": [
-    {
-      "chapterId": 1,
-      "cardsCount": 2
-    }
-  ],
-  "normal": [
-    {
-      "chapterId": 1,
-      "cardsCount": 3
-    }
-  ],
-  "hard": [
-    {
-      "chapterId": 1,
-      "cardsCount": 4
-    }
-  ]
+  "easy": {
+    "duration": 3,
+    "chapters": [
+      {
+        "chapterId": 1,
+        "cardsCount": 2
+      }
+    ]
+  },
+  "normal": {
+    "duration": 2,
+    "chapters": [
+      {
+        "chapterId": 1,
+        "cardsCount": 3
+      }
+    ]
+  },
+  "hard": {
+    "duration": 1.5,
+    "chapters": [
+      {
+        "chapterId": 1,
+        "cardsCount": 4
+      }
+    ]
+  }
 }

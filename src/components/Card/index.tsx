@@ -1,5 +1,5 @@
 "use client"
-import { CardStore } from "@/store/CardStore";
+import { GameStore } from "@/store/Game";
 import { motion } from "framer-motion"
 import { observer } from "mobx-react-lite";
 
@@ -12,7 +12,7 @@ const Card = observer(({ imageURL, id }: IProps) => {
         <>
             <motion.img
                 src={imageURL}
-                onClick={() => CardStore.setSelectedId(id)}
+                onClick={() => GameStore.setSelectedId(id)}
                 className="w-32 h-32 bg-black cursor-pointer rounded-md mx-auto my-10"
                 whileInView={{ scale: 1.1 }}
                 whileHover={{ scale: 1.4 }}

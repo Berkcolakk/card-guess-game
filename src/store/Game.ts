@@ -1,16 +1,16 @@
 import { makeAutoObservable } from 'mobx';
 
-interface ICardStore {
+interface IGameStore {
   selectedId: number;
   setSelectedId(payload: number): void;
 
 }
-const CardStore: ICardStore = {
+const GameStore: IGameStore = {
   selectedId: 0,
   setSelectedId(payload: number) {
     this.selectedId = payload;
   }
 }
-makeAutoObservable(CardStore);
+makeAutoObservable(GameStore);
 
-export { CardStore };
+export { GameStore };

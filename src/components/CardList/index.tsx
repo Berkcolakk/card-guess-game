@@ -4,12 +4,13 @@ import Cards from "@/data/yugiohCards.json";
 import Chapter from "@/data/chapter.json";
 import { observer } from "mobx-react-lite";
 import { gameOption } from "@/store/GameOptionStore";
+import { IChapter } from "@/models/interfaces/Chapter";
 
 const CardList = observer(() => {
     return (
         <div className="flex h-[100dvh]">
             {Cards.map((item, index) => {
-                const getChapter = Chapter[gameOption.mode].filter((item: any) => item.chapterId === 1)[0]
+                const getChapter = Chapter[gameOption.mode].chapters.filter((item: IChapter) => item.chapterId === 1)[0]
                 if (index + 1 > getChapter.cardsCount) {
                     return true;
                 }
