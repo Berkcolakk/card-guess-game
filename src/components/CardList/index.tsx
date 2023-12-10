@@ -10,14 +10,14 @@ import { GAME_LOADING_SCREEN_SECOND } from "@/configs";
 import { Alert } from "antd";
 
 const CardList = observer(() => {
-    const [countdown] = useCountdown({ countStart: Chapter[gameOption.mode].duration + GAME_LOADING_SCREEN_SECOND, countStop: 0, intervalMs: 1000, isIncrement: false })
+    const [countdown] = useCountdown({ countStart: Chapter[gameOption.mode].duration + GAME_LOADING_SCREEN_SECOND, intervalMs: 1000, countStop: 0, isIncrement: false })
     return (
         <div className="flex h-[100dvh]">
             <div>
                 <Alert
                     banner
                     message={
-                        `${countdown} saniyeniz kaldı.` 
+                        `${countdown} saniyeniz kaldı.`
                     }
                 />
             </div>
