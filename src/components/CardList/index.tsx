@@ -1,12 +1,8 @@
 "use client"
-import Card from "@/components/Card";
-import Cards from "@/data/yugiohCards.json";
 import Chapter from "@/data/chapter.json";
 import { observer } from "mobx-react-lite";
 import { gameOption } from "@/store/GameOptionStore";
 import { GameStore } from "@/store/Game";
-
-import { IChapter } from "@/models/interfaces/Chapter";
 import { useCountdown } from "@/hooks/useCountdown";
 import { GAME_LOADING_SCREEN_SECOND } from "@/configs";
 import { Alert } from "antd";
