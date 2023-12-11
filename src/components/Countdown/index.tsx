@@ -1,26 +1,22 @@
 "use client"
-import Card from "@/components/Card";
-import CardList from "@/components/CardList";
-import { useCountdown } from "@/hooks/useCountdown";
-import Title from "antd/es/typography/Title";
 import { useWillChange } from "framer-motion";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { GameStore } from "@/store/Game";
+import { CountdownProps, Statistic } from 'antd';
+import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
+const { Countdown: AntdCountDown } = Statistic;
 interface IProps {
     defaultTimer?: number;
 }
-const Countdown = ({ defaultTimer = 3 }: IProps) => {
+const GameLoadingCountdown = observer(({ defaultTimer = 3 }: IProps) => {
     const willChange = useWillChange()
-    const [countdown] = useCountdown({ countStart: defaultTimer, countStop: 0, intervalMs: 1000, isIncrement: false })
     useEffect(() => {
         GameStore.setLoadingBoxFinish(false);
     }, [])
-    useEffect(() => {
-        if (countdown <= 0) {
-            GameStore.setLoadingBoxFinish(true);
-        }
-    }, [countdown])
+    if (GameStore.loadingBoxFinish) {
+        return (<></>);
+    }
 
     const cursorVariants = {
         blinking: {
@@ -34,11 +30,10 @@ const Countdown = ({ defaultTimer = 3 }: IProps) => {
             }
         }
     };
-    if (countdown <= 0) {
-        return (
-            <></>
-        )
-    }
+    const second = (defaultTimer) * 1000;
+    const onFinish: CountdownProps['onFinish'] = () => {
+        GameStore.setLoadingBoxFinish(true);
+    };
     return (
         <>
             <motion.div transition={{ delay: 1 }}
@@ -48,10 +43,10 @@ const Countdown = ({ defaultTimer = 3 }: IProps) => {
                     className="rounded-full bg-primary mx-auto h-40 w-40 text-center flex justify-center items-center"
                     transition={{ delay: 1 }}
                     style={{ willChange }}>
-                    <Title className="!mb-0" level={1}>{countdown}</Title>
+                    <AntdCountDown title="" format={"ss"} value={Date.now() + second} onFinish={onFinish} />
                 </motion.div>
             </motion.div>
         </>
     )
-}
-export default Countdown
+})
+export default GameLoadingCountdown
