@@ -6,8 +6,12 @@ import { observer } from "mobx-react-lite";
 import { gameOption } from "@/store/GameOptionStore";
 import { GameStore } from "@/store/Game";
 import { IChapter } from "@/models/interfaces/Chapter";
+import { useEffect } from "react";
 
 const RemembranceCards = observer(() => {
+    useEffect(() => {
+        GameStore.setTimeOver(false);
+    }, [])
     if (GameStore.timeOver) {
         return <></>
     }
