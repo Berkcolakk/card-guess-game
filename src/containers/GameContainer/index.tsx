@@ -1,12 +1,12 @@
 import CardList from "@/components/CardList";
-import Countdown from "@/components/Countdown";
+import GameLoadingCountdown from "@/components/GameLoadingCountdown";
 import { GAME_LOADING_SCREEN_SECOND } from "@/configs";
 
 const GameContainer = () => {
     return (
         <>
             <CardList />
-            <Countdown defaultTimer={GAME_LOADING_SCREEN_SECOND} />
+            <GameLoadingCountdown defaultTimer={GAME_LOADING_SCREEN_SECOND} />
         </>
     )
 }

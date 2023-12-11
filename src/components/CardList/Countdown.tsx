@@ -11,8 +11,9 @@ const Countdown = observer(() => {
         GameStore.setTimeOver(true);
     };
     return (
-        <div className="fixed h-20 w-28">
+        <div className="fixed h-20 w-28 left-2/4 bottom-0">
             <Alert
+            className="rounded-full"
                 banner
                 message={
                     <AntdCountDown loading={!!!GameStore.loadingBoxFinish} title="Kalan Süre" format={"ss:SS"} value={Date.now() + second} onFinish={onFinish} />

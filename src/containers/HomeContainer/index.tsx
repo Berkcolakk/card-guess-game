@@ -11,8 +11,8 @@ const HomeContainer = () => {
     return (
         <div className="m-auto h-full items-center w-full">
             <div className="justify-center flex h-full ">
-                <div className="grid grid-cols-1 space-y-2 w-52 h-20 self-center">
-                    <AnimatedText delay={1} texts={["Hoşgeldin", "Oynamaya hazır mısın?"]} className="text-white" />
+                <div className="grid grid-cols-1 space-y-2 w-52 h-20 self-center max-sm:w-20">
+                    <AnimatedText delay={1} texts={["Hoşgeldin", "Oynamaya hazır mısın?"]} className="text-white max-sm:text-[0.5rem]" />
                     <Button onClick={() => router.push("/game")}>Başla</Button>
                     <Button onClick={() => setTrue()}>Ayarlar</Button>
                     <Settings open={value} setOpen={toggle} />

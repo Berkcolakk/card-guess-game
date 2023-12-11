@@ -12,7 +12,7 @@ const AntdConfig = ({ children }: { children: ReactNode }) => {
             modal={{
                 styles: {
                     mask: { backdropFilter: 'blur(10px)', },
-                },
+                }
             }}
         >
             <StyledComponentsRegistry>
