@@ -14,6 +14,9 @@ const Countdown = ({ defaultTimer = 3 }: IProps) => {
     const willChange = useWillChange()
     const [countdown] = useCountdown({ countStart: defaultTimer, countStop: 0, intervalMs: 1000, isIncrement: false })
     useEffect(() => {
+        GameStore.setLoadingBoxFinish(false);
+    }, [])
+    useEffect(() => {
         if (countdown <= 0) {
             GameStore.setLoadingBoxFinish(true);
         }

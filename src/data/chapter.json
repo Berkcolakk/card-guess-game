@@ -1,6 +1,6 @@
 {
   "easy": {
-    "duration": 5,
+    "duration": 4,
     "chapters": [
       {
         "chapterId": 1,
@@ -9,7 +9,7 @@
     ]
   },
   "normal": {
-    "duration": 4,
+    "duration": 2.5,
     "chapters": [
       {
         "chapterId": 1,
@@ -18,7 +18,7 @@
     ]
   },
   "hard": {
-    "duration": 3,
+    "duration": 1.7,
     "chapters": [
       {
         "chapterId": 1,
