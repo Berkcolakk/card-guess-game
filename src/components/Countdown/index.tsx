@@ -6,12 +6,18 @@ import Title from "antd/es/typography/Title";
 import { useWillChange } from "framer-motion";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { GameStore } from "@/store/Game";
 interface IProps {
-    defaultTimer?: number; 
+    defaultTimer?: number;
 }
 const Countdown = ({ defaultTimer = 3 }: IProps) => {
     const willChange = useWillChange()
     const [countdown] = useCountdown({ countStart: defaultTimer, countStop: 0, intervalMs: 1000, isIncrement: false })
+    useEffect(() => {
+        if (countdown <= 0) {
+            GameStore.setLoadingBoxFinish(true);
+        }
+    }, [countdown])
 
     const cursorVariants = {
         blinking: {
@@ -30,7 +36,6 @@ const Countdown = ({ defaultTimer = 3 }: IProps) => {
             <></>
         )
     }
-
     return (
         <>
             <motion.div transition={{ delay: 1 }}
