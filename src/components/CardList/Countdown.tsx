@@ -6,7 +6,7 @@ import { Alert, CountdownProps } from "antd";
 import { Statistic } from 'antd';
 const { Countdown: AntdCountDown } = Statistic;
 const Countdown = observer(() => {
-    const second = Date.now() + ((Chapter[gameOption.mode].duration) * 1000);
+    const second = (Chapter[gameOption.mode].duration) * 1000;
     const onFinish: CountdownProps['onFinish'] = () => {
         GameStore.setTimeOver(true);
     };
@@ -15,7 +15,7 @@ const Countdown = observer(() => {
             <Alert
                 banner
                 message={
-                    <AntdCountDown loading={!GameStore.loadingBoxFinish} title="Kalan Süre" format={"ss:SS"} value={second} onFinish={onFinish} />
+                    <AntdCountDown loading={!!!GameStore.loadingBoxFinish} title="Kalan Süre" format={"ss:SS"} value={Date.now() + second} onFinish={onFinish} />
                 }
             />
         </div>
