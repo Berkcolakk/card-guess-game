@@ -20,7 +20,6 @@ const GameStore: IGameStore = {
     this.timeOver = payload;
   },
   setLoadingBoxFinish(payload: boolean) {
-    debugger
     this.loadingBoxFinish = payload;
   }
 }

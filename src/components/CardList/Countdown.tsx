@@ -1,3 +1,4 @@
+"use client"
 import Chapter from "@/data/chapter.json";
 import { observer } from "mobx-react-lite";
 import { gameOption } from "@/store/GameOptionStore";

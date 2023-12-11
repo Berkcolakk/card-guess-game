@@ -1,3 +1,4 @@
+
 import { TLanguage, TModeTypes } from '@/models/types/GameOption';
 import { makeAutoObservable } from 'mobx';
 
@@ -11,8 +12,8 @@ interface IGameOptionModule {
   setFullScreen(payload: boolean): void;
 }
 const gameOption: IGameOptionModule = {
-  mode: localStorage?.mode ?? "",
-  language: localStorage?.language ?? "tr",
+  mode: typeof window !== "undefined" ? localStorage?.mode : "",
+  language: typeof window !== "undefined" ? localStorage?.language : "tr",
   fullScreen: false,
   setMode(payload: TModeTypes) {
     this.mode = payload;
