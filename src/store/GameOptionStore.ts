@@ -12,8 +12,8 @@ interface IGameOptionModule {
   setFullScreen(payload: boolean): void;
 }
 const gameOption: IGameOptionModule = {
-  mode: typeof window !== "undefined" ? localStorage?.mode : "",
-  language: typeof window !== "undefined" ? localStorage?.language : "tr",
+  mode: typeof window !== "undefined" ? (localStorage?.mode ?? "easy") : "easy",
+  language: typeof window !== "undefined" ? (localStorage?.language ?? "tr") : "tr",
   fullScreen: false,
   setMode(payload: TModeTypes) {
     this.mode = payload;
