@@ -17,7 +17,7 @@ const RemembranceCards = observer(() => {
         return <></>
     }
     const getChapter = Chapter[gameOption.mode].chapters.filter((item: IChapter) => item.chapterId === 1)[0]
-    const uniqueNumbers = generateUniqueNumbers(getChapter.cardsCount);
+    const uniqueNumbers = generateUniqueNumbers(Cards.length, getChapter.cardsCount);
 
     return (
         Array.from(Array(getChapter.cardsCount)).map((item, index) => {

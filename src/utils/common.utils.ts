@@ -5,7 +5,7 @@ export function toggleFullScreen() {
         document.exitFullscreen();
     }
 }
-export const generateUniqueNumbers = (count: number) => {
+export const generateUniqueNumbers = (count: number,chapterTotalCardCount:number) => {
     const addedNumbers = [] as number[];
     const randomNumbers = [] as number[];
 
@@ -16,9 +16,10 @@ export const generateUniqueNumbers = (count: number) => {
             randomNumbers.push(random)
             addedNumbers.push(random);
         }
-        if (count === randomNumbers.length) {
+        if (chapterTotalCardCount === randomNumbers.length) {
             loop = false;
         }
     }
+    console.log(randomNumbers)
     return randomNumbers;
 }
