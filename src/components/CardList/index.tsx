@@ -6,10 +6,10 @@ import Countdown from "./Countdown";
 
 const CardList = observer(() => {
     return (
-        <div className="flex h-[100dvh]">
+        <>
             {GameStore.loadingBoxFinish ? <Countdown /> : <></>}
             <RemembranceCards />
-        </div>
+        </>
     )
 })
 export default CardList
