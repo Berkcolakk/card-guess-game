@@ -13,7 +13,7 @@ const Countdown = observer(() => {
     };
     return (
         <div className="fixed inset-0 flex items-end justify-center">
-            <AntdCountDown loading={!!!GameStore.loadingBoxFinish} title="Kalan Süre" format={"ss:SS"} value={Date.now() + second} onFinish={onFinish} />
+            <AntdCountDown loading={!GameStore.loadingBoxFinish} title="Kalan Süre" format={"ss:SS"} value={Date.now() + second} onFinish={onFinish} />
         </div>
     )
 })
