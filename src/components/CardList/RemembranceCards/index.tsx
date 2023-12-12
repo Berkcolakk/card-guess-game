@@ -16,18 +16,13 @@ const RemembranceCards = observer(() => {
         return <></>
     }
     const getChapter = Chapter[gameOption.mode].chapters.filter((item: IChapter) => item.chapterId === 1)[0]
-    const GetRandomCard = () => {
-        return (
-            Array.from(Array(getChapter.cardsCount)).map((item, index) => {
-                const random = Math.floor(Math.random() * Cards.length);
-                return (
-                    <Card key={index} imageURL={Cards[random].imagePath} id={Cards[random].id} />
-                )
-            })
-        )
-    }
     return (
-        <GetRandomCard />
+        Array.from(Array(getChapter.cardsCount)).map((item, index) => {
+            const random = Math.floor(Math.random() * Cards.length);
+            return (
+                <Card key={index} imageURL={Cards[random].imagePath} id={Cards[random].id} />
+            )
+        })
     )
 })
 export default RemembranceCards;
