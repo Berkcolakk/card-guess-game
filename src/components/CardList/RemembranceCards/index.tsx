@@ -7,6 +7,7 @@ import { gameOption } from "@/store/GameOptionStore";
 import { GameStore } from "@/store/Game";
 import { IChapter } from "@/models/interfaces/Chapter";
 import { useEffect } from "react";
+import { generateUniqueNumbers } from "@/utils/common.utils";
 
 const RemembranceCards = observer(() => {
     useEffect(() => {
@@ -16,11 +17,13 @@ const RemembranceCards = observer(() => {
         return <></>
     }
     const getChapter = Chapter[gameOption.mode].chapters.filter((item: IChapter) => item.chapterId === 1)[0]
+
+    const generateUniqueNumber = generateUniqueNumbers(getChapter.cardsCount);
     return (
         Array.from(Array(getChapter.cardsCount)).map((item, index) => {
             const random = Math.floor(Math.random() * Cards.length);
             return (
-                <Card key={index} imageURL={Cards[random].imagePath} id={Cards[random].id} />
+                <Card key={index} imageURL={Cards[generateUniqueNumber[index]].imagePath} id={Cards[generateUniqueNumber[index]].id} />
             )
         })
     )
