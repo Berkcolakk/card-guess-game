@@ -17,12 +17,12 @@ const RemembranceCards = observer(() => {
         return <></>
     }
     const getChapter = Chapter[gameOption.mode].chapters.filter((item: IChapter) => item.chapterId === 1)[0]
+    const uniqueNumbers = generateUniqueNumbers(getChapter.cardsCount);
 
-    const generateUniqueNumber = generateUniqueNumbers(getChapter.cardsCount);
     return (
         Array.from(Array(getChapter.cardsCount)).map((item, index) => {
             return (
-                <Card key={index} imageURL={Cards[generateUniqueNumber[index]].imagePath} id={Cards[generateUniqueNumber[index]].id} />
+                <Card key={index} imageURL={Cards[uniqueNumbers[index]].imagePath} id={Cards[uniqueNumbers[index]].id} />
             )
         })
     )
