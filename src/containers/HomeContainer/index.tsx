@@ -5,25 +5,30 @@ import AnimatedText from "@/components/AnimatedText";
 import Settings from "@/components/Settings";
 import { useRouter } from "next/navigation";
 import { useBoolean } from "@/hooks/useBoolean";
-import Logo from "@/assets/logo.svg";
-import Image from "next/image";
 const HomeContainer = () => {
     const { toggle, setTrue, value } = useBoolean(false);
     const router = useRouter();
     return (
         <>
             <div className="m-auto h-full items-center w-full">
-                <div className="justify-center flex h-full ">
-                    <div className="grid grid-cols-1 space-y-2 w-52 h-20 self-center">
-                        <AnimatedText delay={1} texts={["Hoşgeldin", "Oynamaya hazır mısın?"]} className="text-white " />
+                <div className="justify-center grid h-full grid-cols-1 place-items-center ">
+                        <AnimatedText delay={1} texts={["Unlock the Secrets of the Cards!",
+                            "Predict the Future with the Power of Cards!",
+                            "Mind-Reading Game: Card Prediction!",
+                            "Rise Above Time with Cards!",
+                            "Discover Surprises in Advance!",
+                            "Use Cards to Grasp the Future!",
+                            "Game Time with Knowledge Cards!",
+                            "The Cards Speak, Are You Listening?",
+                            "Art of Mind-Reading: Card Prediction Game!",
+                            "Reveal the Mysteries Behind the Cards!"]}
+                            className="text-white " />
+                    <div className="grid grid-cols-1 space-y-2 w-52 h-24 self-center">
                         <Button onClick={() => router.push("/game")}>Başla</Button>
                         <Button onClick={() => setTrue()}>Ayarlar</Button>
                         <Settings open={value} setOpen={toggle} />
                     </div>
                 </div>
-            </div>
-            <div className="fixed inset-0 flex items-end justify-center">
-                <Image src={Logo} alt="Logo"  height={125} width={125} className="rounded-2xl mb-2" />
             </div>
         </>
     )

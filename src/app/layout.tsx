@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import AntdConfig from '@/providers/AntdConfig'
 import Head from 'next/head'
+import Main from '@/layouts/Main'
+import Footer from '@/layouts/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -25,10 +27,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-     
-      <body className={`${inter.className} m-0 h-[100dvh] bg-main text-white`}>
+
+      <body className={`${inter.className} m-0 min-h-screen flex flex-col bg-main text-white`}>
         <AntdConfig>
-          {children}
+          <Main>
+            {children}
+          </Main>
+          <Footer />
         </AntdConfig>
       </body>
     </html>
