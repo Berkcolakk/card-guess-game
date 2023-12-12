@@ -21,7 +21,6 @@ const RemembranceCards = observer(() => {
     const generateUniqueNumber = generateUniqueNumbers(getChapter.cardsCount);
     return (
         Array.from(Array(getChapter.cardsCount)).map((item, index) => {
-            const random = Math.floor(Math.random() * Cards.length);
             return (
                 <Card key={index} imageURL={Cards[generateUniqueNumber[index]].imagePath} id={Cards[generateUniqueNumber[index]].id} />
             )
