@@ -8,8 +8,8 @@ import Footer from '@/layouts/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Yu-Gi-Oh Card Guess',
-  description: 'Yu-Gi-Oh Card Guess!',
+  title: 'Card Oracle',
+  description: 'Game Time with Knowledge Cards!',
   icons: [
     {
       rel: 'icon',
