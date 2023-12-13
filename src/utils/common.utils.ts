@@ -19,6 +19,5 @@ export const generateUniqueNumbers = (count: number, chapterTotalCardCount: numb
             loop = false;
         }
     }
-    console.log(randomNumbers)
     return randomNumbers;
 }

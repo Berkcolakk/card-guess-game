@@ -1,26 +1,32 @@
+import { ICards } from '@/models/interfaces/Chapter';
 import { makeAutoObservable } from 'mobx';
 
 interface IGameStore {
-  selectedId: number;
-  timeOver: boolean
+  allCards: ICards[];
+  timeOver: boolean;
+  chapter: number;
   loadingBoxFinish: boolean;
-  setSelectedId(payload: number): void;
+  setAllCards(payload: ICards[]): void;
   setTimeOver(payload: boolean): void;
   setLoadingBoxFinish(payload: boolean): void;
-
+  setChapter(payload: number): void;
 }
 const GameStore: IGameStore = {
-  selectedId: 0,
+  allCards: [],
   timeOver: false,
+  chapter: 1,
   loadingBoxFinish: false,
-  setSelectedId(payload: number) {
-    this.selectedId = payload;
+  setAllCards(payload: ICards[]) {
+    this.allCards = payload;
   },
   setTimeOver(payload: boolean) {
     this.timeOver = payload;
   },
   setLoadingBoxFinish(payload: boolean) {
     this.loadingBoxFinish = payload;
+  },
+  setChapter(payload: number) {
+    this.chapter = payload;
   }
 }
 makeAutoObservable(GameStore);

@@ -12,3 +12,8 @@ export interface IChapterInfo {
     intervalMs: number;
     chapters: IChapter[]
 }
+export interface ICards {
+    id: number;
+    imagePath: string;
+    name: string;
+}

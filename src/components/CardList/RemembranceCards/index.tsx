@@ -5,24 +5,28 @@ import Chapter from "@/data/chapter.json";
 import { observer } from "mobx-react-lite";
 import { gameOption } from "@/store/GameOptionStore";
 import { GameStore } from "@/store/Game";
-import { IChapter } from "@/models/interfaces/Chapter";
-import { useEffect } from "react";
+import { ICards, IChapter } from "@/models/interfaces/Chapter";
+import { useEffect, useMemo } from "react";
 import { generateUniqueNumbers } from "@/utils/common.utils";
+import { getRandomCards } from "@/utils/cards.utils";
 
 const RemembranceCards = observer(() => {
     useEffect(() => {
         GameStore.setTimeOver(false);
+        //Random Cards Setting...
+        const getChapter = Chapter[gameOption.mode].chapters.filter((item: IChapter) => item.chapterId === GameStore.chapter)[0]
+        GameStore.setAllCards(getRandomCards(getChapter))
+
     }, [])
+
+
     if (GameStore.timeOver) {
         return <></>
     }
-    const getChapter = Chapter[gameOption.mode].chapters.filter((item: IChapter) => item.chapterId === 1)[0]
-    const uniqueNumbers = generateUniqueNumbers(Cards.length, getChapter.cardsCount);
-
     return (
-        Array.from(Array(getChapter.cardsCount)).map((item, index) => {
+        GameStore.allCards.map((item, index) => {
             return (
-                <Card key={index} imageURL={Cards[uniqueNumbers[index]].imagePath} id={Cards[uniqueNumbers[index]].id} />
+                <Card key={index} imageURL={item.imagePath} id={item.id} />
             )
         })
     )
