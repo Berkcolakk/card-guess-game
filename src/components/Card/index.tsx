@@ -12,7 +12,7 @@ const Card = observer(({ imageURL, id }: IProps) => {
         <>
             <motion.img
                 src={imageURL}
-                onClick={() => GameStore.setSelectedId(id)}
+                onClick={() => console.log(id)}
                 className="w-32 h-32 bg-black cursor-pointer rounded-md mx-auto my-10"
                 whileInView={{ scale: 1.1 }}
                 whileHover={{ scale: 1.4 }}
