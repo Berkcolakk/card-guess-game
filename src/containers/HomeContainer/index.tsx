@@ -14,8 +14,8 @@ const HomeContainer = () => {
         <>
             <Suspense fallback={<><Spin spinning={true} fullscreen /></>}>
                 <div className="m-auto h-full items-center w-full">
+                    <CardSlider />
                     <div className="justify-center grid h-full grid-cols-1 place-items-center ">
-                        {/* <CardSlider /> */}
                         <AnimatedText delay={1} texts={["Unlock the Secrets of the Cards!",
                             "Predict the Future with the Power of Cards!",
                             "Mind-Reading Game: Card Prediction!",
