@@ -1,23 +1,25 @@
 "use client"
 import Cards from "@/data/yugiohCards.json";
 import Image from "next/image";
-import { Card, Carousel } from 'antd';
+import { Card } from 'antd';
 import Meta from "antd/es/card/Meta";
+import Marquee from "react-fast-marquee";
+
 const CardPresentation = () => {
     return (
-        <Carousel autoplay infinite dots={false} fade speed={1} autoplaySpeed={700} centerMode slidesToShow={3} rows={1} slidesPerRow={1} slidesToScroll={3} className="">
+        <Marquee >
             {Cards.map((item, index) => {
                 return (
                     <Card
                         key={index}
-                        className="!w-60"
-                        cover={<Image src={"/" + item.imagePath} alt={item.name} height={100} width={100} className="h-60 w-10" />}
+                        className="!w-44 m-2"
+                        cover={<Image src={"/" + item.imagePath} alt={item.name} height={60} width={60} className="h-52 w-40" />}
                     >
                         <Meta title={item.name} />
                     </Card>
                 )
             })}
-        </Carousel>
+        </Marquee>
     )
 }
 export default CardPresentation;
