@@ -13,7 +13,7 @@ const CardPresentation = () => {
                     <Card
                         key={index}
                         className="!w-44 m-2"
-                        cover={<Image src={"/" + item.imagePath} alt={item.name} height={60} width={60} className="h-52 w-40" />}
+                        cover={<Image src={"/" + item.imagePath} alt={item.name} priority={true} height={208} quality={100} width={160} className="h-52 w-40" />}
                     >
                         <Meta title={item.name} />
                     </Card>
