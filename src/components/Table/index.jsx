@@ -2,6 +2,8 @@
 import React from "react";
 import { useTable, useFilters, useSortBy, Column } from "react-table";
 import { useBoolean } from "@/hooks/useBoolean";
+import FilterIcon from "./images/filter.svg";
+import Image from 'next/image';
 
 const TableComponent = ({ columns, data, fetchData }) => {
   const { toggle, setTrue, value } = useBoolean(false);
@@ -41,7 +43,7 @@ const TableComponent = ({ columns, data, fetchData }) => {
                 {column.render("Header")}
                 <div>
                   <button onClick={() => toggle()}>
-                  toggle
+                    <Image  src={FilterIcon} height={15} width={15}/>
                   </button>
                   {column.canFilter && value ? (
                     <input
