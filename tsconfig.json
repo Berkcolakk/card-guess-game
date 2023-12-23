@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Table/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Table/index.jsx", "src/components/Table/TableCell/index.jsx", "src/components/Table/PaginationControls/index.jsx", "src/components/Table/TableRow/index.jsx"],
   "exclude": ["node_modules"]
 }

@@ -1,29 +1,42 @@
 import React from "react";
-import { useTable, useFilters, useSortBy } from "react-table";
+import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 import { useBoolean } from "@/hooks/useBoolean";
 import FilterIcon from "./images/filter.svg";
 import Image from "next/image";
 
 const Table = ({ columns, data, fetchData }) => {
-  const { toggle, setTrue, value } = useBoolean(false);
+  const { toggle, value } = useBoolean(false);
 
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
     state,
+    page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    setPageSize,
   } = useTable(
-    { columns, data, initialState: { filters: [], sortBy: [] } },
+    {
+      columns,
+      data,
+      initialState: { filters: [], sortBy: [], pageIndex: 0, pageSize: 10 },
+    },
     useFilters,
-    useSortBy
+    useSortBy,
+    usePagination
   );
 
   React.useEffect(() => {
     fetchData({
-      pageIndex: 0,
-      pageSize: 10, // Sayfa başına gösterilecek öğe sayısı
+      pageIndex: state.pageIndex,
+      pageSize: state.pageSize, // Sayfa başına gösterilecek öğe sayısı
       filters: state.filters,
       sortBy: state.sortBy,
     });
@@ -70,7 +83,7 @@ const Table = ({ columns, data, fetchData }) => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {page.map((row) => {
             prepareRow(row);
             return (
               <tr
@@ -90,6 +103,48 @@ const Table = ({ columns, data, fetchData }) => {
           })}
         </tbody>
       </table>
+      {page <= 10 ? (
+        <div>
+          <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+            {"<<"}
+          </button>{" "}
+          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+            {"<"}
+          </button>{" "}
+          <button onClick={() => nextPage()} disabled={!canNextPage}>
+            {">"}
+          </button>{" "}
+          <button
+            onClick={() => gotoPage(pageCount - 1)}
+            disabled={!canNextPage}
+          >
+            {">>"}
+          </button>{" "}
+          <span>
+            Sayfa{" "}
+            <strong>
+              {state.pageIndex + 1} / {pageOptions.length}
+            </strong>{" "}
+          </span>
+          <span>
+            | Sayfa Boyutu:{" "}
+            <select
+              value={state.pageSize}
+              onChange={(e) => {
+                setPageSize(Number(e.target.value));
+              }}
+            >
+              {[10, 20, 30, 40, 50].map((pageSize) => (
+                <option key={pageSize} value={pageSize}>
+                  {pageSize}
+                </option>
+              ))}
+            </select>
+          </span>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
