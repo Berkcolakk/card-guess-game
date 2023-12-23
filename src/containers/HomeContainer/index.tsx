@@ -36,7 +36,7 @@ const HomeContainer = () => {
                             ),
                         },
                         ]
-                        } data={[{ id: 1, name: 'Yusuf' }, { id: 2, name: 'BERK' }]} fetchData={() => { console.log('TEST') }} />
+                        } data={[{ id: 1, name: 'TEST' }, { id: 2, name: 'TEST 2' }]} fetchData={() => { console.log('TEST') }} />
                         <AnimatedText delay={1} texts={["Unlock the Secrets of the Cards!",
                             "Predict the Future with the Power of Cards!",
                             "Mind-Reading Game: Card Prediction!",
