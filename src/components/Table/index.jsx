@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTable, useFilters, useSortBy, usePagination } from "react-table";
 import { useBoolean } from "@/hooks/useBoolean";
 import FilterIcon from "./images/filter.svg";
@@ -12,6 +12,7 @@ const Table = ({
   updateButton = false,
 }) => {
   const { toggle, value } = useBoolean(false);
+  const [openFilters, setOpenFilters] = useState([]);
 
   const {
     getTableProps,
@@ -75,10 +76,27 @@ const Table = ({
                     <div className="flex">
                       {<h1>{column.render("Header")}</h1>}
                       <div className="px-1">
-                        <button onClick={() => toggle()}>
+                        <button
+                          onClick={() => {
+                            let arr = [];
+                            if (openFilters.includes(column.render("Header"))) {
+                              arr = openFilters.filter(
+                                (item) => item !== column.render("Header")
+                              );
+                              setOpenFilters(arr);
+                              return;
+                            }
+
+                            setOpenFilters([
+                              ...openFilters,
+                              column.render("Header"),
+                            ]);
+                          }}
+                        >
                           <Image src={FilterIcon} height={15} width={15} />
                         </button>
-                        {column.canFilter && value ? (
+                        {column.canFilter &&
+                        openFilters.includes(column.render("Header")) ? (
                           <input
                             className="fixed block  p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             value={
@@ -129,12 +147,19 @@ const Table = ({
                   <td>
                     <div className="flex justify-center">
                       {deleteButton ? (
-                        <button className="m-2" onClick={() => handleDelete(row)}>Sil</button>
+                        <button
+                          className="m-2"
+                          onClick={() => handleDelete(row)}
+                        >
+                          Sil
+                        </button>
                       ) : (
                         <></>
                       )}
                       {updateButton ? (
-                        <button className="m-2" onClick={() => handleEdit(row)}>Düzenle</button>
+                        <button className="m-2" onClick={() => handleEdit(row)}>
+                          Düzenle
+                        </button>
                       ) : (
                         <></>
                       )}
