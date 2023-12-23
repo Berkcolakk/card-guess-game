@@ -17,16 +17,26 @@ const HomeContainer = () => {
                 <div className="m-auto h-full items-center w-full">
                     <CardSlider />
                     <div className="justify-center grid h-full grid-cols-1 place-items-center ">
-                        <TableComponent columns={[{
+                        <TableComponent deleteButton={true} updateButton={true} columns={[{
                             Header: 'ID', accessor: 'id', canSort: true, SortBy: 'id', canFilter: true,
                             Filter: ({ column }: any) => (
                                 <input
                                     {...column.getFilterProps()} // Filtre bileşenine özellikleri ekler
-                                    placeholder="ID filtresi"
+                                    placeholder="ID"
                                 />
                             ),
-                        }]
-                        } data={[{ id: 1 }, { id: 2 }]} fetchData={() => { console.log('TEST') }} />
+                        },
+                        {
+                            Header: 'Ad Soyad', accessor: 'name', canSort: true, SortBy: 'id', canFilter: true,
+                            Filter: ({ column }: any) => (
+                                <input
+                                    {...column.getFilterProps()} // Filtre bileşenine özellikleri ekler
+                                    placeholder="Ad Soyad"
+                                />
+                            ),
+                        },
+                        ]
+                        } data={[{ id: 1, name: 'Yusuf' }, { id: 2, name: 'BERK' }]} fetchData={() => { console.log('TEST') }} />
                         <AnimatedText delay={1} texts={["Unlock the Secrets of the Cards!",
                             "Predict the Future with the Power of Cards!",
                             "Mind-Reading Game: Card Prediction!",
