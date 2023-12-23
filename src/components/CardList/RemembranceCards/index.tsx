@@ -14,7 +14,7 @@ const RemembranceCards = observer(() => {
     useEffect(() => {
         GameStore.setTimeOver(false);
         //Random Cards Setting...
-        const getChapter = Chapter[gameOption.mode].chapters.filter((item: IChapter) => item.chapterId === GameStore.chapter)[0]
+        const getChapter = Chapter[gameOption.mode].chapters.filter((item: Readonly<IChapter>) => item.chapterId === GameStore.chapter)[0]
         GameStore.setAllCards(getRandomCards(getChapter))
 
     }, [])

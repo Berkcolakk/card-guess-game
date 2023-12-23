@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useBoolean } from "@/hooks/useBoolean";
 import CardSlider from "@/components/CardSlider";
 import { Spin } from "antd";
+import TableComponent from "@/components/Table";
 const HomeContainer = () => {
     const { toggle, setTrue, value } = useBoolean(false);
     const router = useRouter();
@@ -16,6 +17,16 @@ const HomeContainer = () => {
                 <div className="m-auto h-full items-center w-full">
                     <CardSlider />
                     <div className="justify-center grid h-full grid-cols-1 place-items-center ">
+                        <TableComponent columns={[{
+                            Header: 'ID', accessor: 'id', canSort: true, SortBy: 'id', canFilter: true,
+                            Filter: ({ column }: any) => (
+                                <input
+                                    {...column.getFilterProps()} // Filtre bileşenine özellikleri ekler
+                                    placeholder="ID filtresi"
+                                />
+                            ),
+                        }]
+                        } data={[{ id: 1 }, { id: 2 }]} fetchData={() => { console.log('TEST') }} />
                         <AnimatedText delay={1} texts={["Unlock the Secrets of the Cards!",
                             "Predict the Future with the Power of Cards!",
                             "Mind-Reading Game: Card Prediction!",

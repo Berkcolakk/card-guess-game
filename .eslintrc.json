@@ -1,3 +1,154 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "globals": {
+    "process": true,
+    "__dirname": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"]
+    }
+  ],
+
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "check-file"],
+  "rules": {
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{tsx}": "PASCAL_CASE",
+        "**/*.{ts}": "PASCAL_CASE",
+        "src/hooks/*.{ts}": "CAMEL_CASE"
+      }
+    ],
+    "check-file/folder-naming-convention": [
+      "error",
+      {
+        "src/constant/*": "PASCAL_CASE",
+        "src/containers/*": "PASCAL_CASE",
+        "src/components/*": "PASCAL_CASE",
+        "src/hooks/*": "PASCAL_CASE",
+        "src/layout/*": "PASCAL_CASE",
+        "src/pages/*": "PASCAL_CASE",
+        "src/redux/*": "PASCAL_CASE",
+        "src/services/*": "PASCAL_CASE",
+        "src/superApi/*": "PASCAL_CASE",
+        "src/types/*": "PASCAL_CASE"
+      }
+    ],
+    "@typescript-eslint/type-annotation-spacing": "error",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "property",
+        "format": ["snake_case", "camelCase", "PascalCase", "UPPER_CASE"]
+      },
+      {
+        "selector": "default",
+        "format": ["PascalCase", "UPPER_CASE"]
+      },
+      {
+        "selector": "variable",
+        "format": ["PascalCase", "camelCase", "UPPER_CASE"],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "parameter",
+        "format": ["camelCase", "UPPER_CASE"],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase", "camelCase", "UPPER_CASE"],
+        "custom": {
+          "regex": "^T[A-Z]",
+          "match": true
+        }
+      },
+      {
+        "selector": "interface",
+        "format": ["PascalCase", "camelCase", "UPPER_CASE"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      }
+    ],
+    "no-use-before-define": "error",
+    "no-duplicate-imports": "error",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-var-requires": 1,
+    "@typescript-eslint/ban-ts-comment": 1,
+    "@typescript-eslint/no-explicit-any": 1,
+    "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/no-unused-expressions": 1,
+    "@typescript-eslint/no-inferrable-types": 1,
+    "@typescript-eslint/unified-signatures": 1,
+    "@typescript-eslint/consistent-type-imports": 1,
+    "@typescript-eslint/member-ordering": 1,
+    "@typescript-eslint/no-namespace": 1,
+    "@typescript-eslint/array-type": 1,
+    "@typescript-eslint/no-dynamic-delete": 1,
+    "@typescript-eslint/consistent-indexed-object-style": 1,
+    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "max-len": ["warn", { "code": 209 }],
+    "no-async-promise-executor": "error",
+    "no-await-in-loop": "error",
+    "no-invalid-regexp": "error",
+    "max-lines-per-function": ["error", 209],
+    "multiline-ternary": "warn",
+    "no-delete-var": "error",
+    "no-compare-neg-zero": "error",
+    "no-unused-labels": "error",
+    "no-useless-catch": "error",
+    "no-useless-escape": "error",
+    "no-with": "error",
+    "use-isnan": "error",
+    "no-unreachable": "error",
+    "no-prototype-builtins": "error",
+    "no-loss-of-precision": "error",
+    "no-extra-semi": "error",
+    "no-extra-boolean-cast": "error",
+    "no-dupe-else-if": "error",
+    "no-dupe-keys": "error",
+    "valid-typeof": "error",
+    "semi": 1,
+    "react/display-name": 1,
+    "prefer-arrow-callback": 2,
+    "no-unsafe-optional-chaining": "error",
+    "no-unsafe-negation": "error",
+    "no-empty": "error",
+    "react/self-closing-comp": 2,
+    "react/react-in-jsx-scope": 0,
+    "no-console": ["error", { "allow": ["error", "warn"] }],
+    "no-debugger": "error",
+    "no-undef": "error",
+    "no-var": "error",
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "no-underscore-dangle": "warn",
+    "func-style": ["error", "expression"]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
+    "react": {
+      "version": "detect"
+    }
+  }
 }
