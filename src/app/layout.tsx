@@ -5,7 +5,7 @@ import AntdConfig from '@/providers/AntdConfig'
 import Head from 'next/head'
 import Main from '@/layouts/Main'
 import Footer from '@/layouts/Footer'
-import Header from '@/layouts/Header'
+import Header from '@/layouts/Header';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className={`${inter.className} m-auto min-h-screen flex flex-col bg-main text-white max-w-[120rem] `}>
+      <body className={`${inter.className} m-auto min-h-screen flex flex-col bg-main text-white max-w-[120rem] dark`}>
         <AntdConfig>
           <Header />
           <Main>
